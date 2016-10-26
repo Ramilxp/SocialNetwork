@@ -1,0 +1,8 @@
+﻿@model Domain.Entities.Avatar  
+@if (Model.ImageData != null)
+    {
+        <div class = "avatar">
+            <img src="@Url.Action("GetAvatar", "Home",
+                new { Model.UserId })" />
+        </div>
+    }

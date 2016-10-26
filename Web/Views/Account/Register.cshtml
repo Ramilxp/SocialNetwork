@@ -1,0 +1,55 @@
+﻿@model Web.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Регистрация";
+    Layout = "~/Views/Shared/Account_Layout.cshtml";
+}
+<div id="body">
+    <section class="content-wrapper main-content clear-fix">
+        <h1>Регистрация.</h1>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            <fieldset>
+                <legend>Форма регистрации</legend>
+                <ol>
+                    <li>
+                        @Html.ValidationSummary(true)
+                    </li>
+                    <li>
+                        <label>Логин:</label>
+                        @Html.TextBoxFor(x => x.UserName) @Html.ValidationMessageFor(x => x.UserName)
+                    </li>
+                    <li>
+                        <label>Пароль:</label>
+                        @Html.EditorFor(x => x.Password) @Html.ValidationMessageFor(x => x.Password)
+                    </li>
+                    <li>
+                        <label>Пароль еще раз:</label>
+                        @Html.EditorFor(x => x.ConfirmPassword) @Html.ValidationMessageFor(x => x.ConfirmPassword)
+                    </li>
+                    <li>
+                        <label>Email:</label>
+                         @Html.TextBoxFor(x => x.Email) @Html.ValidationMessageFor(x => x.Email)
+                    </li>
+                    <li>
+                        <label>Email еще раз:</label>
+                        @Html.TextBoxFor(x => x.ConfirmEmail) @Html.ValidationMessageFor(x => x.ConfirmEmail)
+                    </li>
+                    <li>
+                        <label>Фамилия:</label>
+                         @Html.TextBoxFor(x => x.LastName) @Html.ValidationMessageFor(x => x.LastName)
+                    </li>
+                    <li>
+                        <label> Имя:</label>
+                        @Html.TextBoxFor(x => x.FirstName) @Html.ValidationMessageFor(x => x.FirstName)
+                    </li>
+                    <li>
+                        <label>Отчество:</label>
+                         @Html.TextBoxFor(x => x.MiddleName) @Html.ValidationMessageFor(x => x.MiddleName)
+                    </li>
+                </ol>
+                <input type="submit" value="Регистрация" />
+            </fieldset>
+        }
+    </section>
+</div>

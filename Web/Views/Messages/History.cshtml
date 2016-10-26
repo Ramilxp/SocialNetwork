@@ -1,0 +1,27 @@
+﻿@model Web.Models.ChatModelView
+    
+    @foreach (var message in Model.Chat)
+    {
+        if (message.UserId==Model.UserFrom.Id)
+        {
+            <li class="other">
+                <div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/>
+                </div>
+                <div class="msg">
+                    <p>@message.Text</p>
+                    <time>@message.CreatedDate.ToShortTimeString()</time>
+                </div>
+            </li>
+        }
+        if (message.UserId == Model.MeUser.Id)
+        {
+            <li class="self">
+                <div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/>
+                </div>
+                <div class="msg">
+                    <p>@message.Text</p>
+                    <time>@message.CreatedDate.ToShortTimeString()</time>
+                </div>
+            </li>
+        }
+    }

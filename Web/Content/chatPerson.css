@@ -1,0 +1,86 @@
+input.textarea {
+    position: relative;
+    bottom: 0px;
+	width:100%;
+	box-sizing:border-box;
+    left: 0px;
+    right: 0px;   
+    height: 50px;
+    z-index: 99;
+    background: #fafafa;
+    border: none;
+    outline: none;
+    padding-left: 55px;
+    padding-right: 55px;
+    color: #666;
+    font-weight: 400;
+	display: flex;
+}
+
+.person{
+    bottom: 0px;
+	width:auto;
+    left: 0px;
+    right: 0px;   
+    height: 50px;
+    z-index: 99;
+    background: #fafafa;
+    border-bottom: 1px solid #7ac0da;
+    outline: none;
+    padding:15px;
+    color: #666;
+    font-weight: 400;
+	border-radius:10px;
+}
+.person img{
+	border-radius:100%;
+	float:left;
+}
+.person a{
+	padding-left: 0px;
+    padding-right: 0px;
+}
+ul.people{
+    padding-right: 20px;	
+	padding-left: 0px;	
+}
+.name, .time, .preview{
+display:block;
+  font-size: 14px;
+  line-height: 22px;
+  color: #1a1a1a;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+}
+.name{
+	position: absolute;
+    padding-left: 60px;
+	text-align:left;
+	float:left;
+}
+.preview{ 
+	font-size: 12px;
+    position: absolute;
+	float: left;
+	vertical-align:top;
+    text-align: left;
+	padding-top: 40px;
+    margin-right: 0px;
+    padding-left: 60px;
+    overflow: hidden !important;
+    width: 70%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #999;
+}
+.time{
+	text-align:right;
+	float:right;
+}
+
+.left .people {
+  margin-left: -1px;
+  border-right: 1px solid #e6e6e6;
+  border-left: 1px solid #e6e6e6;
+  list-style: none;
+}

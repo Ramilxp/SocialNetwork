@@ -1,0 +1,35 @@
+﻿@model Web.Models.UserViewModel
+<div align="center">
+    <div class="img_block">
+        @if (Model != null)
+        {
+            if (Model.Avatar != null)
+             {
+                 <img src="@Url.Action("GetAvatar", "Home", new {Model.Avatar.UserId})"/>
+             }
+             else
+             {
+                 <img src="http://placehold.it/250x250"/>
+             }
+            if (Model.UserIsMe)
+             {
+                 <div class="over_block"></div>
+                 <span>
+            @Html.ActionLink("Обновить фото", "AddAvatar", "Home", new {userId = Model.User.Id}, new {@class = "viewDialog", data_dialog_title = "Загрузить фото"})
+        </span>
+             }
+        }
+    </div>
+</div>
+<ul id="menu">
+    <li>@Html.ActionLink("Моя страница", "Index", "Home")</li>
+    <li>@Html.ActionLink("Друзья", "IndexFriendTest", "Friends")</li>
+    <li>@Html.ActionLink("Сообщения", "Index", "Messages")</li>
+    <li>@Html.ActionLink("Блог", "Index", "Search")</li>
+</ul>
+@*<ul id="menu">
+    <li>@Ajax.ActionLink("Моя страница", "Index", "Home",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Друзья", "Index", "Friends",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Сообщения", "Index", "Messages",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Блог", "Index", "Search",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+</ul>*@

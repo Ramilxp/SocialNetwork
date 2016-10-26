@@ -1,0 +1,44 @@
+﻿@using Domain.Entities
+@model Web.Models.ChatModelView
+@{
+    ViewBag.Title = "Chat";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<link rel="stylesheet" href="/Content/style.css">
+<div id="leftcol">
+    @Html.Partial("Menu")
+    <ul id="menu">
+    <li>@Ajax.ActionLink("Моя страница", "Index", "Home",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Друзья", "Index", "Friends",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Сообщения", "Index", "Messages",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Блог", "Index", "Search",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+</ul>
+</div>
+<div id="rightcol">
+    <div class="menu">
+        <a href="@Url.Action("Index", "Messages")">
+            <div class="back"><i class="fa fa-chevron-left"></i>
+                <img src="http://i.imgur.com/DY6gND0.png" /></div>
+        </a>
+        <div class="name">@Model.UserFrom.FirstName</div>
+        <div class="last">@DateTime.Now.ToShortDateString()</div>
+    </div>
+    <ol class="chat" id="RefreshArea">
+        @Html.Partial("History", Model)
+    </ol>
+
+    @using (Ajax.BeginForm("NewMessage", new AjaxOptions { UpdateTargetId = "RefreshArea" }))
+    {
+        @Html.Hidden("userId", Model.MeUser.Id)
+        @Html.Hidden("userFromId", Model.UserFrom.Id)
+        @Html.Hidden("CreateDate", DateTime.Now)
+        <div class="block" style="width: auto; padding-right: 20px;">
+            <input id="Text" name="Text" class="textarea" type="text" placeholder="Type here!" />
+            <button id="btnMessage" value="Отправить">Отправить</button>
+        </div>
+    }
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+

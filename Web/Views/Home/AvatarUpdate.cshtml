@@ -1,0 +1,27 @@
+﻿@model Web.Models.AvatarUdateModel
+<div>
+    @using (Html.BeginForm("AddAvatar", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            @if (Model.Avatar != null)
+            {
+                <img src="@Url.Action("GetAvatar", "Home", new {Model.UserId})"/>
+            }
+            else
+            {
+                <img src="http://placehold.it/250x250"/>
+            }
+            <legend>Обновить фото</legend>
+             
+            <div class="editor-label">Файл изображения</div>
+            <div class="editor-field">
+                <input type="file" name="uploadImage"/>
+            </div>
+            @Html.HiddenFor(m=>m.UserId)
+            <p>
+                <input type="submit" value="Добавить"/>
+            </p>
+        </fieldset>
+    }
+</div>

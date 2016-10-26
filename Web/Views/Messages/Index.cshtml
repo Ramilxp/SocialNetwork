@@ -1,0 +1,37 @@
+﻿@using Web.Models
+@model List<IncomingMessageViewModel>
+@{
+    ViewBag.Title = "Мои сообщения";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+ 
+}
+<link rel="stylesheet" href="/Content/chatPerson.css">
+<div id="leftcol">
+    @Html.Partial("Menu")
+    <ul id="menu">
+    <li>@Ajax.ActionLink("Моя страница", "Index", "Home",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Друзья", "Index", "Friends",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Сообщения", "Index", "Messages",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+    <li>@Ajax.ActionLink("Блог", "Index", "Search",new AjaxOptions{ UpdateTargetId="rightcol"})</li>
+</ul>
+</div>
+<div id="rightcol">
+    <div class="left">
+        <div class="block" style="width: auto; padding-right: 20px;">
+            <input class="textarea" type="text" placeholder="Type here!" />
+        </div>
+        @foreach (var message in Model)
+        {
+            <ul class="people">
+                <li class="person" data-chat="person1">
+                    <a href="@Url.Action("Chat", "Messages", new { userFromId = message.UserFrom.Id })">
+                        <img src="http://s13.postimg.org/ih41k9tqr/img1.jpg" alt="" />
+                        <span class="name">@message.UserFrom.FirstName  @message.UserFrom.LastName</span>
+                        <span class="time">@message.Message.CreatedDate.ToShortDateString()</span>
+                        <span class="preview">@message.Message.Text</span>
+                    </a>
+                </li>
+            </ul>
+        }
+    </div>
+</div>
